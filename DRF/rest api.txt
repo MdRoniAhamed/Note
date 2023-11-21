@@ -1,0 +1,81 @@
+API ==> Application Programming Interface.
+REST ==> Representational State Transfer
+REST ==> It is an architectural guideline to develop web API. 
+REST API / RESTFull API ==> The API which is developed using REST is known  as REST API.
+
+CRUD Operations ==> 
+	 Create : POST      => Creating/posting/inserting data.
+	 Read   : GET       => Reading/Getting/retrieving Data.
+	 Update : PUT,PATCH => Updating Data 
+							Complete Update - PUT 
+							Partial Update  - PATCH
+	 Delete : DELETE	=> Deleting Data 
+	 
+
+http://geekyshows.com/api/students
+	   ------1------- -2- --- 3 ---
+	   1: Base URL
+	   2: Naming Convention
+	   3: Resource of API or End-Point
+
+serializers , 
+Deserializers,
+class:
+======> 
+Serializer and Serializertion in Django REST Framework (Hindi): Completed.
+
+Serializer Fields and Core Arguments in Django REST Framework (Hindi): Completed
+
+DeSerialization and Insert Data Django REST Framework (Hindi): Completed
+
+CRUD API using Function Based View and Class Based View in Django REST Framework (Hindi): completed
+
+Validation in Django REST Framework (Hindi): completed 
+
+Model Serializer in Django REST Framework (Hindi) : completed.
+
+Function Based API View in Django REST Framework (Hindi) : completed.
+
+Class Based API View in Django REST Framework (Hindi) : completed.
+
+Generic API View and Mixins in Django REST Framework (Hindi): Completed
+
+Concrete View Class in Django REST Framework : Completed.
+
+ViewSet in Django REST Framework : Completed.
+
+Model View Set and Ready Only Model View Set in Django REST Framework : completed.
+
+Basic Authentication and Permission Class in Django REST Framework : completed
+
+Session Authentication and Permission in Django REST Framework : completed.
+
+Custom Permission in Django REST Framework : Completed.
+
+Authentication and Permission in Function Based View in Django REST Framework : completed.
+
+Token Authentication in Django REST Framework : Completed.
+
+Custom Authentication in Django REST Framework :completed.
+
+JSON Web Token and Simple JWT in Django REST Framework : completed.
+
+Throttling in Django REST Framework : completed
+
+Filtering and django filter in Django REST Framework : completed.
+
+Search Filter in Django REST Framework (Hindi): Completed.
+
+Ordering Filter in Django REST Framework (Hindi): Completed.
+
+Page Number Pagination in Django REST Framework (Hindi): completed.
+
+Limit Offset Pagination in Django REST Framework (Hindi): Completed.
+
+Cursor Pagination in Django REST Framework (Hindi) : Completed.
+
+Serializer Relations in Django REST Framework (Hindi): completed.
+
+Hyperlinked Model Serializer in Django REST Framework (Hindi): Complete.
+
+Nested Serializer in Django REST Framework (Hindi): Complete.

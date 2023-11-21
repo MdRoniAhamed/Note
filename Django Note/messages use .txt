@@ -1,0 +1,16 @@
+
+Documentation Link: https://docs.djangoproject.com/en/4.2/ref/contrib/messages/ 
+
+
+															Django Template Using Customize Django message
+															==============================================
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

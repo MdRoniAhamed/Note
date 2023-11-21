@@ -1,0 +1,11 @@
+								DRF add Templates:
+								==================
+								
+1. Install requests
+
+2. Write request function in views.py, with api from which you want Data.
+
+3. Set URL for that view function 
+
+4. Display from template 
+

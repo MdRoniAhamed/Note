@@ -1,0 +1,94 @@
+													Use Slug Field:
+													===============
+													
+Tutorial link:  https://www.geeksforgeeks.org/add-the-slug-field-inside-django-model/ 
+
+
+													
+models.py:
+===========
+
+from django.db import models
+
+class Post(models.Model):
+    title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, blank=True, null=True)
+    text = models.TextField()
+    published_date = models.DateTimeField(auto_now_add=True)
+    upload = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-published_date"]
+    
+    def __str__(self):
+        return self.title
+    
+
+
+signals.py:
+===========
+
+import string,random
+from django.utils.text import slugify
+from django.dispatch import receiver
+from django.db.models.signals import pre_save
+from .models import Post
+
+def random_string_generator(size = 10, chars = string.ascii_letters + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+def unique_slug_generator(instance, new_slug = None):
+    if new_slug is not None:
+        slug = new_slug
+    else:
+        slug = slugify(instance.title)
+    Klass = instance.__class__
+    max_length = Klass._meta.get_field('slug').max_length
+    slug = slug[:max_length]
+    qs_exists = Klass.objects.filter(slug=slug).exists()
+
+    if qs_exists:
+        new_slug = "{slug}-{randstr}".format(slug= slug[:max_length-5], randstr = random_string_generator(size=4))
+        return unique_slug_generator(instance, new_slug=new_slug)
+    return slug
+        
+@receiver(pre_save, sender=Post)
+def pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance)
+		
+		
+views.py:
+=========
+from django.shortcuts import render,HttpResponse
+from .models import Post
+from . import signals
+
+def detail(request, slug):
+    # Filter posts based on the slug (case-insensitive)
+    q = Post.objects.filter(slug__iexact=slug)
+ 
+    if q.exists():
+        # If a post with the given slug exists, retrieve the first matching post
+        q = q.first()
+    else:
+        # If no post is found, return an "Post Not Found" response
+        return HttpResponse('<h1>Post Not Found</h1>')
+ 
+    # Create a context dictionary containing the retrieved post
+    context = {'post': q}
+ 
+    # Render the 'details.html' template with the context
+    return render(request, 'details.html', context)
+	
+
+urls.py:
+=========
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+	path('posts/<slug:slug>/', views.detail, name='post_detail'),
+	# Other URL patterns
+]

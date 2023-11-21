@@ -1,0 +1,26 @@
+Git & GitHub
+$ git checkout -b feature
+
+
+$ git push origin feature
+
+check current folder:-> pwd 
+
+Working Directory:->
+
+	git init, 
+	see all changes => git status
+
+    Stage:-> 
+	git add --all  /gti add -A  / git add .
+	git reset
+	
+	
+	git pull origin (staging(any name) )
+	
+	git clone -b <branch name> url
+	git clone -b developer https://github.com/MdRoniAhamed/Furniture-Bazar.git
+	
+	
+	python -m pip freeze > requirments.txt 
+	

@@ -1,0 +1,53 @@
+ Django commands:
+	1.django-admin stratproject (name) 
+	2. python manage.py runserver
+	3. python manage.py showmigrations
+	4. python manage.py startapp (name)
+	5.  
+	6. python manage.py sqlmigrate payments (file_digit) 
+	7. python manage.py migrate 
+	8. python manage.py createsuperuser
+	
+		17 feb 2023 . 
+	Django class: 
+
+
+	pip install virtualenv  -> install virtualenv 
+	python3 -m virtualenv venv  ----> create virtualenv
+	venv\Scripts\activate  ---> active virtualenv (for windows)
+	source venv/bin/activate  ---> Activate mac/linux
+
+
+	Django Install: 
+	pip install django
+
+
+	django project create:
+	django-admin startproject test_project .
+
+
+	Run Django
+	python manage.py runserver  
+
+
+	Django Migrations
+	python manage.py makemigrations
+	python manage.py migrate
+
+
+	Django super user create
+	python manage.py createsuperuser   
+
+
+	Django app create
+	python manage.py startapp home 
+	
+	class note: 23-2-2023:
+		py manage.py collectstatic 
+		
+		
+	Extra commands:
+
+
+* pip freeze
+

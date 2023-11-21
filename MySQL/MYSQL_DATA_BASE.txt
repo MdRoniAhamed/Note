@@ -1,0 +1,419 @@
+MYSQL DataBase :
+	kill port command: XAMPP Software not open: 
+	
+		netstat -ano | findstr :<PORT>
+		
+		taskkill /PID <PID> /F
+		
+	12 to 15 number ta video dekha hoysa
+	
+	1. SHOW DATABASES;
+	2. CREATE DATABASE college;
+	3. DROP DATABASE college;
+	
+	4: Key 	
+		3 type of key:
+			i. Primary Key, ii,Composite Primary key. iii) Foreign key
+	
+	5:DBMS 
+		what is work on DATABASE.
+			1. CREATE DATABASE
+			2. UPDATE DATABASE
+			3. PRINT DATABASE
+			4. BACKUP AND RECOVERY DATABASE
+			5. SAVE DATA
+			6. RETRIEVE DATA
+			7. DELETE DATA
+			8. SECURE DATA etc.
+			
+	6: RDBMS :
+		1. RDBMS VS DBMS 
+		DBMS => DataBase Management System
+		RDBMS => Relatoional DataBase Management System
+	
+	7: DATABASE Relation:
+		3 kinds of DataBase Relation:
+			1) One-to-one 2) One-to-many 3) Many-to-many
+	
+	8: sorting and indexing:
+		যে সকল data base e sorting করা যাবে না ==>
+			মেমো, হাইপারলিঙ্ক, OLE ফিল্ডে sorting হয় না।
+		
+		indexing is best of sorting. 
+		
+	9: Database Security:  ( Cryptography te ei topic bistarito jana jave.)
+		1. encryption:
+			different way of data encryption:
+				1. সিজান কোড
+				২. DES(Data Encryption Standard)
+				3.IDEA (International Data Encryption Algorithm)
+			encryption এর প্রকারভেদঃ
+				১। গোপন কী এনক্রিপশন / সিমেট্রিক এনক্রিপশন
+				২। পাব্লিক কি এনক্রিপশন / অ্যাসিমেট্রিক এনক্রিপশন
+	
+	10: Query languages  
+		বিভিন্ন ধরনের query:
+			1. select query
+			2. perameter query
+			3. ক্রসট্যাব query
+			4. অ্যানাম্যাচড query
+			5. action query
+			
+			4 type of Action Query :
+				i> Make table Query
+				ii> Append Query
+				iii> Delete Query
+				iv> Update Query
+		# 3 kind of Query Languages
+			1. QUEL (Query Language)
+			2. QBE (Query By Example)
+			3. SQL (STructured Query Language)
+			
+		# SQL statement feature:
+			
+			i. কেস সেনসিটিভ নয় । 	SELECT /select
+			ii. statement এর শেষে সেমিকোলন (;) দিতে হবে।
+			iii. statement কে ভেঙ্ঘে একাধিক লাইনে লেখা যায়।
+	
+	11: SQL: 
+		* DBMS = DataBase Management System
+		* DBMS = DB + MS
+		 
+		* Some examples of popular DBMS are MySql, Oracle, Sybase, Microsoft Access and IBM DB2 etc.
+		
+		@ SQL =>  Standard Query Language
+		
+		@ SQL statement:
+				1. DML (Data Manipulation Language)
+					=> SELECT
+					=> INSERT 
+					=> UPDATE 
+					=> DELETE
+					
+				2. DDL(Data Definition Language)
+					=> CREATE 
+					=> ALTER
+					=> DROP
+				
+				3. DCL (Data Control Language) 
+					=> GRANT
+					=> REVOKE
+					
+				4. DTL (Data Transaction Language)
+					=> COMMIT
+					=> ROLLBACK
+					=> SAVEPOINT
+					
+			XAMPP stands for Cross-Platform (X), Apache (A), MySQL(M), PHP (P) and Perl(P)
+	
+			
+	13,15,16,17,18, 19, 20: SQL command:
+		# show database 
+			-> SHOW DATABASES;
+			
+		# create data base
+			-> CREATE DATABASE name;
+		
+		#delete database 
+			-> DROP DATABASE college;
+		
+		#delete table 
+			-> DROP TABLE table_name;
+		
+		# table create 
+			-> 
+			CREATE TABLE table_name
+			(
+			column_name1 data_type(size),
+			column_name1 data_type(size),
+			column_name1 data_type(size),
+			...
+			column_name1 data_type(size),
+			PRIMARY KEY(NAME)
+			);
+			
+		# table rename:
+			-> RENAME TABLE old_name TO new_name;
+			
+		# syntax for data insertion
+			-> INSERT INTO table_name (column1, coloumn2, column3, ..., columnN)
+			   VALUES(value1, value2, value3,...,valueN)
+			or/
+			-> INSERT INTO table_name 
+			   VALUES (value1, value2, value3, ...) 
+		
+		# SELECT STATEMENT 
+			* select statement searching.
+				syntax:
+				# Show all file specific table data
+					-> SELECT *
+					FROM table_name;
+					
+				# search specific column 
+					->  SELECT column_name
+					FROM table_name;
+					
+				# duplicate value cleaned and clean data provide:
+					->  SELECT DISTINCT column_name
+						FROM student_details;
+				
+				# limite row show command
+					->  SELECT *
+						FROM student_details
+						LIMIT 5;
+					or,
+					->  SELECT *
+						FROM student_details
+						LIMIT 2,5;
+						
+				# Sorting ascending order
+					->  SELECT Name 
+						FROM student_details
+						ORDER BY Name;
+						
+				# Sorting descending order
+					->  SELECT Roll,Name,GPA
+						FROM student_details
+						ORDER BY Name DESC;
+					or,
+					->  SELECT Roll,Name,GPA
+						FROM student_details
+						ORDER BY Name,GPA;
+		
+			
+	
+	14:SQL data type:
+		
+		# Numeric Data type .
+		--------------------
+		* SMALLINT , INT , BIGINT
+		
+		* FLOAT , DOUBLE(M,D) , DECIMAL(M,D) 
+		
+		# Character Type
+		--------------------
+		* Char(m) , Varchar(m) , text 
+		
+		#Date and time Data Type:
+		-------------------------
+		* YEAR (YYYY) , DATE (YYYY-MM-DD) , TIME (HH:MM:SS)
+		
+		#Some other data type:
+		----------------------
+		* BLOB
+		* Logical
+		
+	21: statement operation.
+	
+	22: WHERE clause 
+		#	WHERE 
+			->  SELECT column_list
+				FROM table_name
+				WHERE condition;
+			or,
+			->  SELECT DISTINCT city
+				FROM student_details
+				WHERE Gender="Male"
+				ORDER BY city DESC;
+	23: BETWEEN 
+			->  SELECT *
+				FROM student_details
+				WHERE Roll BETWEEN 102 AND 105;
+				
+	24,25,26: Loical Operator;
+		AND, OR, IN, NOT, LIKE.
+		
+		# AND, OR 
+			->  SELECT *
+				FROM student_details
+				WHERE city ='sylet'
+				AND
+				(Gender='Female'or GPA>= 3.50);
+		
+		# IN
+			->  SELECT *
+				FROM student_details
+				WHERE city IN('sylhet','Dhaka','Barisal');
+		
+		# NOT IN
+			->  SELECT *
+				FROM student_details
+				WHERE city NOT IN('sylhet','Dhaka','Barisal');
+		
+		# LIKE 
+			->  SELECT *
+				FROM student_details
+				WHERE Name LIKE 's%';
+		
+	27: AS
+		# 
+			->  SELECT Roll AS ID, Name AS 'First Name'
+				FROM student_details;
+	
+	28:  NULL, NOT NULL, AUTO_INCREMENT, PRIMARY KEY
+		# 
+			->  CREATE TABLE teacher
+				(
+					ID int NULL AUTO_INCREMENT,
+					Name varchar(15) NOT NULL,
+					PRIMARY KEY(ID)
+				);
+				
+	29: UPDATE STATEMENT
+		#  update syntax 
+			->  UPDATE table_name
+				SET column1 = value1, column2=value2 ...
+				WHERE condition.
+	30: DELETE STATEMENT
+		# TABLE DATA Clear 
+			->  DELETE FROM table_name
+				WHERE condition;
+				
+	31: UPPER AND LOWER
+		# UPPER 
+			->  SELECT UPPER('write text');
+			or,
+			->  SELECT UPPER(city)
+				FROM student_details;
+		
+		#LOWER
+			-> SELECT LOWER('Write_text');
+	
+	32: Function name:
+		* UPPER(), LOWER(), CONCAT(), POW(), GREATEST(), LEAST(), LOG(), LOG10(), EXP(), RAND(), TRUNCATE()
+		
+	33: Group Function:
+		* AVG, COUNT, MAX, MIN, SUM
+		
+	33: DESCRIBE table_name;
+	
+	34: Sub query=>
+		* 
+		
+		
+	35: Alter table command is working
+		# new table column add, column name change.column delete.
+		
+		#syntax 
+			*add new table column
+			->  ALTER TABLE table_name
+				ADD column_name datatype[size];
+			
+			*rename table column
+			->  ALTER TABLE table_name
+				CHANGE oldcolumn_name  newcolumn_name datatype[size];
+			
+			*DELETE table column
+			->  ALTER TABLE table_name
+				DROP COLUMN column_name;
+				
+				
+	36: UPDATE
+		->  UPDATE table_name
+			SET Department= 'CSE'
+			WHERE ID=1000;
+			
+	37: GROUP BY clause
+		-> 
+			SELECT column, group_function(column)
+			FROM table
+			[WHERE condition]
+			[GROUP BY group_by_expression]
+			[ORDER BY column];
+			
+		*examples:
+		SELECT Depertment,SUM(Salary)
+		FROM teacher
+		GROUP BY Depertment;
+		
+	38: TRUNCATE TABLE command
+		* All table data delete but not delete table.
+		
+		-> TRUNCATE TABLE table_name;
+	=============================================================
+	JOINING table:
+	=============================================================
+	39-40: JOINING tow table examples:
+		-> 
+		SELECT student_details.Roll,Reg_Number,Name,Gender,GROUP_Name,GPA
+		FROM student_details,exam_result
+		WHERE student_details.Roll = exam_result.Roll;
+		WHERE student_details.Roll = exam_result.Roll;
+		WHERE student_details.Roll = exam_result.Roll;
+		
+		or:
+		SELECT std.Roll,exam.Reg_Number,std.Name,std.Gender,exam.GROUP_Name,exam.GPA
+		FROM student_details AS std,exam_result AS exam
+		WHERE std.Roll = exam.Roll;
+		
+		and JOIN keyword:
+		SELECT std.Roll,exam.Reg_Number,std.Name,std.Gender,exam.GROUP_Name,exam.GPA
+		FROM student_details AS std JOIN exam_result AS exam
+		ON std.Roll = exam.Roll;
+		
+	41: INNER JOIN:
+		-> 
+			SELECT std.Roll,exam.Reg_Number,std.Name,std.Gender,exam.GROUP_Name,exam.GPA
+			FROM student_details AS std INNER JOIN exam_result AS exam
+			ON std.Roll = exam.Roll;
+			
+	42: LEFT JOIN, RIGHT JOIN 
+		* LEFT JOIN:
+		-> 
+			SELECT std.Roll,exam.Reg_Number,std.Name,std.Gender,exam.GROUP_Name,exam.GPA
+			FROM student_details AS std LEFT JOIN exam_result AS exam
+			ON std.Roll = exam.Roll;
+		
+		*RIGHT JOIN:
+		->
+			SELECT std.Roll,exam.Reg_Number,std.Name,std.Gender,exam.GROUP_Name,exam.GPA
+			FROM student_details AS std RIGHT JOIN exam_result AS exam
+			ON std.Roll = exam.Roll;
+	
+	43: UNION, UNION ALL 
+		*  Union duplicate value remove and new file
+		->
+			SELECT Roll,Name,Gender
+			FROM sylhet_tour
+			UNION
+			SELECT Roll,Name,Gender
+			FROM dhaka_tour;
+			
+		* UNION ALL not delete duplicate value
+		-> 
+			SELECT Roll,Name,Gender
+			FROM sylhet_tour
+			UNION ALL
+			SELECT Roll,Name,Gender
+			FROM dhaka_tour;
+			
+			
+	44-45: VIEW in SQL 
+		* virtual data show 
+			->  syntax
+				CREATE VIEW view_name AS 
+				SELECT column_name(s)
+				FROM table_name
+				WHERE condition;
+		
+		* view update table value:
+			-> 
+				UPDATE view_name
+				SET condition
+				WHERE condition;
+		* view value insert:
+			-> same to table
+		* view value delete
+			->
+				DELETE FROM view_name
+				WHERE condition;
+		
+		* view DROP
+			-> DROP VIEW view_name;
+				
+	46-47: DATE and TIME
+		* CURDATE(), CURTIME(),NOW(), ADDDATE(), SUBDATE(), DAYNAME(), MONTHNAME(),
+		
+		
+		
+		=====================================END=====================================

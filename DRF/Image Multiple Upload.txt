@@ -1,0 +1,112 @@
+													Upload Multiple image in DRF:
+													=============================
+													
+Tutorial link: https://philipodulaja.hashnode.dev/how-to-upload-multiple-images-with-django-rest-framework 
+models.py:
+==========
+
+from django.db import models
+from django.utils.text import slugify 
+
+# Product Model
+class Product(models.Model):
+    CATEGORY_CHOICES = [
+                        ("toys", "toys"), 
+                        ("foods", "foods"),
+                        ("cosmetics", "cosmetics"), 
+                        ("fashion", "fashion")
+                        ]
+    name = models.CharField(max_length=50, blank=False)
+    description = models.CharField(max_length=255, blank=False)
+    category = models.CharField(max_length=9, choices=CATEGORY_CHOICES)
+    slug = models.CharField(max_length=80, blank=False, null=False,unique=True)
+    price = models.DecimalField(max_digits=7, decimal_places=2)
+    date = models.DateField(auto_now_add=True)
+
+    # User Slug field
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return "%s" % (self.name)
+    
+# Image Model
+class ProductsImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,related_name='images')
+    image = models.ImageField(upload_to="products")
+
+
+    def __str__(self):
+        return "%s" % (self.product.name)
+
+
+
+serializers.py:
+================
+
+
+from rest_framework import serializers
+from .models import Product, ProductsImage
+
+# ProductsImage Model Serializer
+class ProductImageSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = ProductsImage
+        fields = ['id','product','image']
+
+
+# Product Model Serializer
+class ProductSerializer(serializers.ModelSerializer):
+    images = ProductImageSerializers(many=True, read_only=True)
+    upload_images = serializers.ListField(child=serializers.ImageField(
+        allow_empty_file=False, use_url=False), write_only=True)
+    slug = serializers.SlugField(read_only=True)
+
+    class Meta:
+        model = Product
+        fields = ['id', 'name','slug','category', 'description',
+                  'price', 'date', 'images', 'upload_images']
+    
+    def create(self, validated_data):
+        upload_images = validated_data.pop("upload_images")
+
+        # new product add in Product model
+        product = Product.objects.create(**validated_data)
+
+        # new image add in ProductsImage Model
+        for image in upload_images:
+            ProductsImage.objects.create(product=product, image=image)
+        
+        return product
+
+
+views.py:
+==========
+
+
+from rest_framework.generics import CreateAPIView
+from rest_framework.viewsets import ModelViewSet
+from .serializers import ProductSerializer, Product
+from rest_framework.parsers import MultiPartParser, FormParser
+
+class ProductCreateView(ModelViewSet):
+    queryset = Product.objects.all()
+    parser_classes = [MultiPartParser, FormParser]
+    serializer_class = ProductSerializer
+	
+	
+settings.py:
+============
+
+
+# add Static and Media files.
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_URL = '/static/'  
+
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL ='/media/'
+
+WSGI_APPLICATION = 'ImageUpload.wsgi.application'

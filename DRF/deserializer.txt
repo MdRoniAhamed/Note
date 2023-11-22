@@ -1,3 +1,12 @@
+
+serialize: 
+
+Complex data type — — serialization — → python native data type — -json →json data
+
+deserialize:
+
+JSON Data — Parse data →Python native data — De-serialization →Complex Data
+
 Deserializers:
 While serializers primarily handle data serialization, deserializers perform the reverse process. Deserializers take data in a format like JSON and convert it into complex data types, such as Django model instances, after validating and parsing the incoming data.
 

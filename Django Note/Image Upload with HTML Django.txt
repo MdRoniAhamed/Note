@@ -1,0 +1,94 @@
+														Image Upload with HTML Django
+														=============================
+														
+models.py:
+==========
+
+from django.db import models
+
+# Upload Image Model
+class Image(models.Model):
+    photo = models.ImageField(upload_to='img')
+    date = models.DateTimeField(auto_now_add=True)
+
+
+views.py :
+============
+
+
+
+# Image Upload views
+from django.shortcuts import render
+from .forms import Image, ImageForm
+
+# Image Upload View with html from 
+def home(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    form = ImageForm() 
+    img = Image.objects.all()       
+    context = {
+        'form':form,
+        'img':img
+    }
+    return render(request,'home.html',context)
+	
+
+Main urls:
+==========
+
+# Main Url
+
+from django.contrib import admin
+from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',include('image.urls'))
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+
+
+settings.py:
+=============
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    ...,
+    'image',
+	...
+]
+
+
+
+# add Static and Media files.
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+STATIC_URL = '/static/'  
+
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL ='/media/'
+
+WSGI_APPLICATION = 'ImageUpload.wsgi.application'
+
+
+
+HTML form:
+==========
+
+ <!--Image Upload HTML Form-->
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <p><span></span></p>
+            <br>
+            <input type="submit" value="Upload">
+        </form>
+		
+		

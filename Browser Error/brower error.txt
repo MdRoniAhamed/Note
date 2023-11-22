@@ -1,0 +1,10 @@
+error solve: 
+
+Your connection is not secure 
+
+
+chrome :
+just now url 'chrome://flags/' 
+Block insecure private network requests=disable
+
+now error is solve

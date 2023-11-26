@@ -1,6 +1,10 @@
 														  TokenAuthentication:
 														========================
 
+
+Documentation link: https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication
+
+
 This authentication scheme uses a simple token-based HTTP Authentication scheme. Token Authentication is appropriate for client-server setups, such as native desktop and mobile clients.
 
 To use the TokenAuthentication scheme you'll need to configure the authentication classes to include TokenAuthentication, and additionally include 
